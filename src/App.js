@@ -1,4 +1,5 @@
 import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 
 function App() {
@@ -17,11 +18,24 @@ function App() {
 
   return (<div style={{display:"flex", flexWrap: 'wrap',height:'100vh', alignItems:'center', justifyContent: 'center', background: '#1E3560'}}>
     {elements}
-    {console.log(elements)}
   </div>
   );
 }
-
+function ButtonBooked(){
+  const [booked, setBooked] = useState(10);
+  console.log(booked);
+  const handelClick = () => {
+    setBooked(booked + 1);
+  } 
+  return (
+    <div>
+      
+    <h4 style={{color:'#fff'}}>Booked days: {booked}</h4>
+    <button onClick={handelClick} style={{border:'none', cursor: 'pointer', backgroundColor: '#0DC167',fontSize:'18px', color:'#fff', padding:'15px'}}>Booking Now</button>  
+    
+    </div>
+  )
+}
 function Grid(props){
   return(
     <div>
@@ -32,11 +46,13 @@ function Grid(props){
       <div style={{display:'flex', flexDirection:'column', alignItems:'center', position:'relative', top:'-50px'}}>
         <img style={{maxWidth:'50%'}} src={logo}/>
         <h2 style={{color: '#fff'}}>{props.title}</h2>
-        <button style={{border:'none', cursor: 'pointer', backgroundColor: '#0DC167',fontSize:'18px', color:'#fff', padding:'15px'}}>Booking Now</button>
+        <ButtonBooked></ButtonBooked>
       </div>
       </div>
     </div>
-  )
-}
+  );
+};
+
+
 
 export default App;
